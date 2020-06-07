@@ -17,7 +17,6 @@ INSTA_LOGIN_URL = "https://www.instagram.com/accounts/login/"
 
 USER_AGENT = "Mozilla/5.0 (Linux; Android 8.1; EML-L29 Build/HUAWEIEML-L29; xx-xx) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/65.0.3325.109 Mobile Safari/537.36"
 
-
 ROOT_IMAGE_STORAGE = Path(Path.cwd()/"root_images")
 
 IMAGE_QUARANTINE = ROOT_IMAGE_STORAGE / "quarantine"

@@ -1,7 +1,4 @@
 .zip
-root_images/future_images/*
-root_images/quarantine/*
-root_images/submissions/*
 pc_setup_ideas-final.zip
 bot_new_v/pyvenv.cfg
 bot_new_v/Lib/site-packages/_virtualenv.pth
