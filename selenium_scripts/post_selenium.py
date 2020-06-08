@@ -11,6 +11,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, WebDriverException, ElementNotVisibleException
 import constants as con, time
 import pyautogui as auto
+import platform
 from getpass import getpass
 from pathlib import Path
 
@@ -75,7 +76,12 @@ class Post_with_selenium:
     def main(self):
         
         #create self._driver object
-        self._driver_path = Path("../chromedriver.exe")
+        if platform.system()=="linux":
+            self._driver_path = Path("/usr/lib/chromium-browser/chromedriver")
+        elif platform.system()=="Windows":
+            self._driver_path = Path("../chromedriver.exe")
+        else:
+            print("Not suported OS")
 
         self._url_login = con.INSTA_LOGIN_URL
         self._user_agent = con.USER_AGENT
