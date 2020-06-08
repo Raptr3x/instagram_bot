@@ -4924,3 +4924,6 @@ bot_new_v/Scripts/wheel.exe
 bot_new_v/Scripts/wheel3.exe
 bot_new_v/Scripts/winsound.pyd
 selenium_scripts/__pycache__/post_selenium.cpython-37.pyc
+.vscode/launch.json
+__pycache__/constants.cpython-38.pyc
+__pycache__/database.cpython-38.pyc

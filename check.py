@@ -12,6 +12,13 @@ from pathlib import Path
 
 log.basicConfig(format='%(levelname)s:%(message)s', level=log.DEBUG)
 
+def prepare_image_storage():
+    storage_list = [con.ROOT_IMAGE_STORAGE, con.IMAGE_QUARANTINE, con.IMAGE_STORAGE, con.SUBMISSION_STORAGE]
+
+    for folder in storage_list:
+        if not folder.exists():
+            Path.mkdir(folder)
+
 def _is_image(image_path):
     """
     Checks if a file is jpg
