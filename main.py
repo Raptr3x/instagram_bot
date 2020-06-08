@@ -9,20 +9,6 @@ from pathlib import Path, PureWindowsPath
 from database import Database
 from test_post_data import show_data
 
-"""
-0) Check if image count below threshold, if true:
-	a) Populate quarantine directory
-	b) Perform checks on downloaded image:
-		I) Check image hash if similar has been posted
-		II) Check image for human face
-		III) Check image for red flag keywords (We don't want to pull advertisement images)
-		IV) If at least one check is true, image is deleted
-	c) Hash images that remained and move them to future_images directory
-1) Select a random image from future_images
-2) Get random description and random 25 hashtags from db
-3) Post image to Instagram
-4) Print bot data and wait selected amount of time, go to 0)
-"""
 
 check.prepare_image_storage()
 
@@ -54,7 +40,7 @@ while 1:
 
 	#3) Post image to Instagram, use show_data() to test, post_with_selenium() to post to Instagram
 	show_data(path, caption)
-	
+
 
 	#prepare data for printing
 	allPosts+=1
