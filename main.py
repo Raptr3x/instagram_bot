@@ -1,6 +1,7 @@
 import time
 import images
 import os
+import check
 from datetime import datetime, timedelta
 from getpass import getpass
 import constants as con
@@ -23,17 +24,21 @@ from test_post_data import show_data
 4) Print bot data and wait selected amount of time, go to 0)
 """
 
+check.prepare_image_storage()
+
+root = con.ROOT_IMAGE_STORAGE
+
 db = Database()
+
 wait_time = db.get_wait_time()
 allPosts=0
 startTime=time.time()
+
 password = getpass("Enter your password: ")
-root = con.ROOT_IMAGE_STORAGE
-resupply_threshold = 10 #threshold for resupplying
 
 while 1:
 	#0) Check if image count below threshold
-	if len(os.listdir(root/"future_images"))<resupply_threshold:
+	if len(os.listdir(root/"future_images"))<con.RESUPPLY_TRESHOLD:
 		images.get_new_images(password) #steps a to c
 
 

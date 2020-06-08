@@ -27,6 +27,8 @@ SUBMISSION_STORAGE = ROOT_IMAGE_STORAGE / "submissions"
 
 REDFLAG_KEYWORDS = ["giveaway", "free", "check", "you", "follow", "me", "best", "mouse", "mousepad", "keyboard", "pc", "computer", "laptop", "only", "money", "get", "%"]
 
+RESUPPLY_TRESHOLD = 10 #threshold for resupplying
+
 MENU = '''
 ********************************************************
 *``````````INSTAGRAM`PC_SETUP_IDEAS`BOT````````````````*
