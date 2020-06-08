@@ -15,6 +15,16 @@ log.basicConfig(format='%(levelname)s:%(message)s', level=log.DEBUG)
 Used to work with images as in select image, get new images etc
 """
 
+def count_images():
+    count = 0
+    for storage in os.listdir(con.ROOT_IMAGE_STORAGE):
+        for profile in os.listdir(str(con.ROOT_IMAGE_STORAGE/storage)):
+            for file in os.listdir(str(con.ROOT_IMAGE_STORAGE/storage/profile)):
+                if (con.ROOT_IMAGE_STORAGE/storage/profile/file).is_file():
+                    count+=1
+    
+    return count
+
 def get_image():
     """
     Returns Path of selected image and folder name
@@ -70,5 +80,6 @@ def get_new_images(password):
         log.info(f"Moved {profile} images to future_images")
 
 if __name__ == "__main__":
-    passw = getpass("password: ")
-    get_new_images(passw)
+    # passw = getpass("password: ")
+    # get_new_images(passw)
+    print(count_images())
