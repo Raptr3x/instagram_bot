@@ -23,8 +23,8 @@ startTime=time.time()
 password = getpass("Enter your password: ")
 
 while 1:
-	#0) Check if image count below threshold
-	if len(os.listdir(root/"future_images"))<con.RESUPPLY_TRESHOLD:
+	#0) Check if image count below threshold, this one is bad, should check in each folder, not just future_images
+	if len([con.IMAGE_STORAGE.iterdir()])<con.RESUPPLY_TRESHOLD:
 		images.get_new_images(password) #steps a to c
 
 

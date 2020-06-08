@@ -54,13 +54,7 @@ def get_new_images(password):
         
         save_path = str(quarantine/profile)
         
-        os.system(f'instaloader --login {con.USERNAME_RESUPPLY} --password {password} \
-            --no-metadata-json \
-            --no-captions \
-            --fast-update \
-            --no-profile-pic \
-            --dirname-pattern="{save_path}" \
-            {profile}')
+        os.system(f'instaloader --login {con.USERNAME_RESUPPLY} --password {password} --no-metadata-json --no-captions --fast-update --no-profile-pic --dirname-pattern="{save_path}" {profile}')
 
         #b) Perform checks on downloaded images
 
@@ -69,9 +63,9 @@ def get_new_images(password):
         for img in img_ls:
             img_path = img.resolve() # aabsolute path but still windwosPath obj, has to be casted to string
             if not check.check_hash(img_path) or not check.check_4_face(img_path) or not check.check_4_text(img_path):
-                os.remove(img_path) 
-            else:
-                shutil.move(str(img_path), str(con.IMAGE_STORAGE/profile))
+                os.remove(img_path)
+        
+        shutil.move(str(con.IMAGE_QUARANTINE/profile), str(con.IMAGE_STORAGE/profile))
 
         log.info(f"Moved {profile} images to future_images")
 
