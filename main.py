@@ -52,9 +52,9 @@ while 1:
 	caption = caption + f"taken from: @{folder}"
 
 
-	#3) Post image to Instagram
+	#3) Post image to Instagram, use show_data() to test, post_with_selenium() to post to Instagram
 	show_data(path, caption)
-
+	
 
 	#prepare data for printing
 	allPosts+=1
