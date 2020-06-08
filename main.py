@@ -8,7 +8,7 @@ import constants as con
 from pathlib import Path, PureWindowsPath
 from database import Database
 from test_post_data import show_data
-
+from selenium_scripts.post_selenium import Post_with_selenium
 
 check.prepare_image_storage()
 
@@ -20,12 +20,13 @@ wait_time = db.get_wait_time()
 allPosts=0
 startTime=time.time()
 
-password = getpass("Enter your password: ")
+password_resupply = getpass(f"Resupply:\nEnter your @{con.USERNAME_RESUPPLY} password: ")
+password = getpass(f"Post:\nEnter your @{con.USERNAME} password: ")
 
 while 1:
 	#0) Check if image count below threshold, this one is bad, should check in each folder, not just future_images
 	if len([con.IMAGE_STORAGE.iterdir()])<con.RESUPPLY_TRESHOLD:
-		images.get_new_images(password) #steps a to c
+		images.get_new_images(password_resupply) #steps a to c
 
 
 	#1) Select a random image from future_images
@@ -39,7 +40,8 @@ while 1:
 
 
 	#3) Post image to Instagram, use show_data() to test, post_with_selenium() to post to Instagram
-	show_data(path, caption)
+	# show_data(path, caption)
+	posting = Post_with_selenium(path, caption, password)
 
 
 	#prepare data for printing

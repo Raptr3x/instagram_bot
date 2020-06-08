@@ -167,4 +167,4 @@ submit button:
 
 if __name__ == "__main__":
     print("Runing as test")
-    p = Post_with_selenium(Path("C:/Users/bogda/OneDrive/Desktop/rest/bot_windows/test.jpg"), "Final testing", "nemanjina12")
+    p = Post_with_selenium(Path("C:/Users/bogda/OneDrive/Desktop/rest/bot_windows/test.jpg"), "Final testing")
