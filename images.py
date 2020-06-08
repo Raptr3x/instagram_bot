@@ -77,4 +77,4 @@ def get_new_images(password):
 
 if __name__ == "__main__":
     passw = getpass("password: ")
-    get_new_images(passw")
+    get_new_images(passw)
