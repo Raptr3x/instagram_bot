@@ -54,7 +54,7 @@ def get_new_images(password):
         
         save_path = str(quarantine/profile)
         
-        os.system(f'instaloader --login {con.USERNAME} --password {password} \
+        os.system(f'instaloader --login {con.USERNAME_RESUPPLY} --password {password} \
             --no-metadata-json \
             --no-captions \
             --fast-update \
