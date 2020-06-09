@@ -4,14 +4,14 @@ This script will be a temporary replacement for instapy-cli.
 Due to Instagram API problems, this script will be using Selenium.
 """
 import sys
-sys.path.append("..")
+sys.path.append(r"D:\Programiranje\Python_projects\bots\pc_setup_ideas-final")
 from selenium import webdriver
 from selenium.webdriver.chrome.options import *
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, WebDriverException, ElementNotVisibleException
-import constants as con, time
+import constants as con
+import time
 import pyautogui as auto
-import platform
 from getpass import getpass
 from pathlib import Path
 
@@ -31,7 +31,7 @@ class Post_with_selenium:
         self._cookies = con.COOKIES_SELENIUM
         self._image_path = image_path
         self._caption = caption
-        self.main()
+        # self.main()
     
     def close_popups(self, xpath):
         for i in range(5):
@@ -61,7 +61,7 @@ class Post_with_selenium:
         """
         From: https://github.com/Haffz/Python-Instagram-Bot/blob/master/instaLike.py
         """
-        driver = self._driver
+        driver = con.CHROMEDRIVER_PATH
         driver.get("https://www.instagram.com/accounts/login")
         time.sleep(2)
         user_name_elem = driver.find_element_by_name('username')
@@ -76,12 +76,7 @@ class Post_with_selenium:
     def main(self):
         
         #create self._driver object
-        if platform.system()=="linux":
-            self._driver_path = Path("/usr/lib/chromium-browser/chromedriver")
-        elif platform.system()=="Windows":
-            self._driver_path = Path("../chromedriver.exe")
-        else:
-            print("Not suported OS")
+        self._driver_path = con.CHROMEDRIVER_PATH
 
         self._url_login = con.INSTA_LOGIN_URL
         self._user_agent = con.USER_AGENT
@@ -98,6 +93,7 @@ class Post_with_selenium:
         _options.add_argument('--user-agent='+self._user_agent)
         self._driver = webdriver.Chrome(executable_path=self._driver_path,options=_options)
         self._driver.get(self._url_login)
+
         self.check_connection()
         try:
             for c in self._cookies:
@@ -160,15 +156,6 @@ class Post_with_selenium:
         time.sleep(4)
         self._driver.close()
         
-"""
-two factor auth
-
-input html:
-<input aria-required="true" aria-describedby="verificationCodeDescription" aria-label="Security Code" autocapitalize="off" autocorrect="off" maxlength="8" name="verificationCode" type="tel" class="_2hvTZ pexuQ zyHYP" value="">
-
-submit button:
-<button class="sqdOP  L3NKy   y3zKF     " type="button">Confirm</button>
-"""
         
 
 if __name__ == "__main__":

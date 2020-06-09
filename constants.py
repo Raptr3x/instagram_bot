@@ -1,4 +1,7 @@
 from pathlib import Path
+import platform
+from selenium import webdriver
+
 
 USERNAME = "pc_setup_ideas"
 USERNAME_RESUPPLY = "joshua_john655"
@@ -28,6 +31,13 @@ SUBMISSION_STORAGE = ROOT_IMAGE_STORAGE / "submissions"
 REDFLAG_KEYWORDS = ["giveaway", "free", "check", "you", "follow", "me", "best", "mouse", "mousepad", "keyboard", "pc", "computer", "laptop", "only", "money", "get", "%"]
 
 RESUPPLY_TRESHOLD = 10 #threshold for resupplying
+
+if platform.system()=="Linux":
+    CHROMEDRIVER_PATH = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
+elif platform.system()=="Windows":
+    CHROMEDRIVER_PATH = webdriver.Chrome("D:\\Programiranje\\Python_projects\\bots\\pc_setup_ideas-final\\selenium_scripts\\chromedriver.exe")
+else:
+    print("Not suported OS")
 
 MENU = '''
 ********************************************************
