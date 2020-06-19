@@ -94,10 +94,10 @@ class Post_with_selenium:
         except WebDriverException:
             print("Login with cookies failed")
             #enter login info, cookies didn't work
-            user_name_elem = driver.find_element_by_name('username')
+            user_name_elem = _driver.find_element_by_name('username')
             user_name_elem.clear()
             user_name_elem.send_keys(self._username)
-            passworword_elem = driver.find_element_by_name('password')
+            passworword_elem = _driver.find_element_by_name('password')
             passworword_elem.clear()
             passworword_elem.send_keys(self._password)
             passworword_elem.send_keys(Keys.RETURN)
