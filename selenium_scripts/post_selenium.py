@@ -56,12 +56,6 @@ class Post_with_selenium:
             return 0
         except NoSuchElementException:
             print("Couldn't find main msg so connection must be stable")
-    
-    def login(self):
-        """
-        From: https://github.com/Haffz/Python-Instagram-Bot/blob/master/instaLike.py
-        """
-        
 
     def main(self):
         
@@ -120,17 +114,24 @@ class Post_with_selenium:
             time.sleep(3)
         except NoSuchElementException:
             pass
-        #close pop-ups
         cookies = self._driver.get_cookies()
+        with open("cookies.txt", "w") as f:
+            f.write(cookies)
         print("logged in")
+
+        
+        #close pop-ups
+        time.sleep(5)
         self.check_connection()
-        #self.close_popups("//*[@id='react-root']/section/main/div/button")
+        self.close_popups("//button[contains(text(), 'Not Now')]") #not now to turn on notifications
+        self.check_connection()
+        time.sleep(5)
         self.close_popups("//button[contains(text(), 'Cancel')]") #cancel adding instagram to homescreen
                            #/html/body/div[4]/div/div/div[3]/button[2]
                            
                            #/html/body/div[4]/div/div/div[3]/button[2]
-        self.check_connection()
-        self.close_popups("//button[contains(text(), 'Not Now')]") #not now to turn on notifications
+
+
         #upload image
         try:
             self.check_connection()
