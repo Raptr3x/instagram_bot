@@ -140,7 +140,6 @@ class Post_with_selenium:
             #sometimes a popup blocks a post button on the bottom
             self.check_connection()
             self.close_popups("/html/body/div[4]/div/div[2]/div/div[5]/button")
-        print(self._image_path)
         auto.typewrite(str(self._image_path))
         time.sleep(10)
         auto.press('enter')
