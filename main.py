@@ -15,7 +15,7 @@ check.prepare_image_storage()
 root = con.ROOT_IMAGE_STORAGE
 
 db = Database()
- 
+
 wait_time = db.get_wait_time()
 allPosts=0
 startTime=time.time()

@@ -31,7 +31,7 @@ class Post_with_selenium:
         self._cookies = con.COOKIES_SELENIUM
         self._image_path = image_path
         self._caption = caption
-        # self.main()
+        self.main()
     
     def close_popups(self, xpath):
         for i in range(5):
@@ -96,6 +96,7 @@ class Post_with_selenium:
 
         self.check_connection()
         try:
+            raise WebDriverException #until I fix cookies
             for c in self._cookies:
                 self._driver.add_cookie(c)
             self._driver.get(self._url_login)

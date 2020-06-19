@@ -32,12 +32,13 @@ REDFLAG_KEYWORDS = ["giveaway", "free", "check", "you", "follow", "me", "best", 
 
 RESUPPLY_TRESHOLD = 10 #threshold for resupplying
 
-if platform.system()=="Linux":
+_platf = platform.system()
+if _platf=="Linux":
     CHROMEDRIVER_PATH = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
-elif platform.system()=="Windows":
+elif _platf=="Windows":
     CHROMEDRIVER_PATH = webdriver.Chrome("D:\\Programiranje\\Python_projects\\bots\\pc_setup_ideas-final\\selenium_scripts\\chromedriver.exe")
 else:
-    print("Not suported OS")
+    print(f"{_platf} is not a suported OS")
 
 MENU = '''
 ********************************************************

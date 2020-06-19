@@ -4,3 +4,4 @@ bot/
 .vscode/
 __pycache__/
 pc_setup_ideas-final.zip
+settings.db
