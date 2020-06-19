@@ -13,6 +13,12 @@ class Database:
         """
         self.conn  = sqlite3.connect("settings.db")
         self.c = self.conn.cursor()
+        #check if db corrupted
+        with open("settings.sql", "r") as sqlFile:
+            sql = sqlFile.read()
+        if len(self.c.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall())<2:
+            self.c.executescript(sql)
+
 
 
     def close_database(self):
@@ -84,8 +90,9 @@ class Database:
 
 if __name__ == "__main__":
     db = Database()
-    caption = db.get_caption()
-    wait_time = db.get_wait_time()
-    dataTargets = db.get_resupply_targets()
-    print(caption,"\n",wait_time,"\n",dataTargets)
+
+    # caption = db.get_caption()
+    # wait_time = db.get_wait_time()
+    # dataTargets = db.get_resupply_targets()
+    # print(caption,"\n",wait_time,"\n",dataTargets)
     
