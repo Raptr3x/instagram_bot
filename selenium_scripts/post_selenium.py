@@ -116,7 +116,7 @@ class Post_with_selenium:
             pass
         cookies = self._driver.get_cookies()
         with open("cookies.txt", "w") as f:
-            f.write(cookies)
+            f.write(str(cookies))
         print("logged in")
 
         
