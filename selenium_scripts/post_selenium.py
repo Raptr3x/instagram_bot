@@ -61,17 +61,7 @@ class Post_with_selenium:
         """
         From: https://github.com/Haffz/Python-Instagram-Bot/blob/master/instaLike.py
         """
-        driver = con.CHROMEDRIVER_PATH
-        driver.get("https://www.instagram.com/accounts/login")
-        time.sleep(2)
-        user_name_elem = driver.find_element_by_name('username')
-        user_name_elem.clear()
-        user_name_elem.send_keys(self._username)
-        passworword_elem = driver.find_element_by_name('password')
-        passworword_elem.clear()
-        passworword_elem.send_keys(self._password)
-        passworword_elem.send_keys(Keys.RETURN)
-        time.sleep(2)
+        
 
     def main(self):
         
@@ -104,7 +94,14 @@ class Post_with_selenium:
         except WebDriverException:
             print("Login with cookies failed")
             #enter login info, cookies didn't work
-            self.login()
+            user_name_elem = driver.find_element_by_name('username')
+            user_name_elem.clear()
+            user_name_elem.send_keys(self._username)
+            passworword_elem = driver.find_element_by_name('password')
+            passworword_elem.clear()
+            passworword_elem.send_keys(self._password)
+            passworword_elem.send_keys(Keys.RETURN)
+            time.sleep(2) #finished log in sequence
             try:
                 self._driver.find_element_by_xpath("//button[contains(text(), 'Save Info')]").click()
                 time.sleep(5)
