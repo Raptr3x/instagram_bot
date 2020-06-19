@@ -20,8 +20,14 @@ wait_time = db.get_wait_time()
 allPosts=0
 startTime=time.time()
 
-password_resupply = getpass(f"Resupply:\nEnter your @{con.USERNAME_RESUPPLY} password: ")
-password = getpass(f"Post:\nEnter your @{con.USERNAME} password: ")
+if Path("passwords.txt").exists():
+	with open("passwords.txt", "r") as f:
+		passwords = f.read().split(",")
+	password_resupply = passwords[0]
+	password = passwords[1]
+else:
+	password_resupply = getpass(f"Resupply:\nEnter your @{con.USERNAME_RESUPPLY} password: ")
+	password = getpass(f"Post:\nEnter your @{con.USERNAME} password: ")
 
 while 1:
 	#0) Check if image count below threshold, this one is bad, should check in each folder, not just future_images
