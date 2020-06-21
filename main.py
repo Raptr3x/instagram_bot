@@ -68,7 +68,10 @@ def main():
 
 		time.sleep(wait_time)
 
-atexit.register(notify.pushbullet_message("Warning!", "Instagram bot has stopped!"))
+def send_notification():
+	notify.pushbullet_message("Warning!", "Instagram bot has stopped!")
+
+atexit.register(send_notification)
 
 if __name__ == "__main__":
 	main()
