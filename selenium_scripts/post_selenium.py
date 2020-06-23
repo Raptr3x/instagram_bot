@@ -122,12 +122,16 @@ class PostMediaPage:
         #go next
         self.driver.find_element_by_xpath("//button[contains(text(), 'Next')]").click()
 
+        _wait()
+
         #enter caption
         self.driver.find_element_by_tag_name("textarea").send_keys(caption)
 
         #share media
         self.driver.find_element_by_xpath("//button[contains(text(), 'Share')]").click()
         
+        _wait()
+
         #close browser
         self.driver.close()
 
@@ -150,4 +154,4 @@ if __name__ == "__main__":
     feed.goto_post()
 
     postPage = PostMediaPage(driver)
-    postPage.postMedia(r"D:\Programiranje\Python_projects\bots\pc_setup_ideas-final\test_img.jpg", "testing")
+    postPage.postMedia(r"../test_img.jpg", "testing")
