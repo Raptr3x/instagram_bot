@@ -4,7 +4,7 @@ from selenium import webdriver
 
 
 USERNAME = "pc_setup_ideas"
-USERNAME_RESUPPLY = "joshua_john655"
+USERNAME_RESUPPLY = "loves_and_fluffs"
 
 if USERNAME == "pc_setup_ideas":
     COOKIES_SELENIUM = [{'domain': '.instagram.com', 'httpOnly': True, 'name': 'urlgen', 'path': '/', 'secure': True, 'value': '"{/"80.110.116.122/": 6830}:1ibtQ4:13bRDQD7qOXIOsPihtpEMuO28O8"'}, {'domain': '.instagram.com', 'httpOnly': False, 'name': 'ds_user_id', 'path': '/', 'secure': True, 'value': '9192513055'}, {'domain': '.instagram.com', 'httpOnly': True, 'name': 'ig_did', 'path': '/', 'secure': True, 'value': '3DD9BF31-BA14-4C8E-99D1-CE25CD95CE2F'}, {'domain': 'www.instagram.com', 'httpOnly': False, 'name': 'ig_cb', 'path': '/', 'secure': False, 'value': '1'}, {'domain': '.instagram.com', 'httpOnly': True, 'name': 'rur', 'path': '/', 'secure': True, 'value': 'FTW'}, {'domain': '.instagram.com', 'httpOnly': True, 'name': 'shbts', 'path': '/', 'secure': True, 'value': '1575322787.2666047'}, {'domain': '.instagram.com', 'httpOnly': False, 'name': 'mid', 'path': '/', 'secure': True, 'value': 'XeWEoQAAAAF4zuShuQ0JIFOElFit'}, {'domain': '.instagram.com', 'httpOnly': False, 'name': 'csrftoken', 'path': '/', 'secure': True, 'value': 'aLpoPVH5NUpKztX66v5oq6Hqr8YHQAeZ'}, {'domain': '.instagram.com', 'httpOnly': True, 'name': 'sessionid', 'path': '/', 'secure': True, 'value': '9192513055%3AC0lXYUlZOXc53f%3A22'}, {'domain': '.instagram.com', 'httpOnly': True, 'name': 'shbid', 'path': '/', 'secure': True, 'value': '7777'}]
@@ -17,6 +17,8 @@ else:
     exit()
 
 INSTA_LOGIN_URL = "https://www.instagram.com/accounts/login/"
+
+INSTA_FEED_URL = "https://www.instagram.com/"
 
 USER_AGENT = "Mozilla/5.0 (Linux; Android 8.1; EML-L29 Build/HUAWEIEML-L29; xx-xx) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/65.0.3325.109 Mobile Safari/537.36"
 
