@@ -25,8 +25,8 @@ class Post_with_selenium:
         - password (if not given, required to be entered by user)
  
     """
-    def __init__(self, image_path, caption, password=False):
-        self._username = con.USERNAME
+    def __init__(self, image_path, caption, username=con.USERNAME, password=False):
+        self._username = username
         self._password = password if password else getpass(f"Please enter password for @{self._username} --> ")
         self._cookies = con.COOKIES_SELENIUM
         self._image_path = image_path
@@ -35,14 +35,16 @@ class Post_with_selenium:
     
     def close_popups(self, xpath):
         for i in range(5):
+            print("Scrolling to get popup")
             time.sleep(3)
             self._driver.find_element_by_css_selector('body').send_keys(Keys.PAGE_DOWN)
             try:
                 self._driver.find_element_by_xpath(xpath).click()
                 break
-            except:
-                pass
-    
+            except Exception as ಠ_ಠ:
+                print(ಠ_ಠ)
+
+
     def check_connection(self):
         try:
             for i in range(10):
@@ -55,7 +57,7 @@ class Post_with_selenium:
                     break
             return 0
         except NoSuchElementException:
-            print("Couldn't find main msg so connection must be stable")
+            print("Couldn't find error msg so connection must be stable")
 
     def main(self):
         
@@ -69,7 +71,7 @@ class Post_with_selenium:
         _options = Options()
         _options.add_argument("--log-level=1")
         #_options.add_argument("--silent")
-        #_options.add_argument("--headless")
+        # _options.add_argument("--headless")
         _options.add_argument("--no-sandbox")
         #_options.add_argument("--disable-logging")
         _options.add_argument("--mute-audio")
@@ -124,6 +126,7 @@ class Post_with_selenium:
         time.sleep(5)
         self.check_connection()
         self.close_popups("//button[contains(text(), 'Not Now')]") #not now to turn on notifications
+        #self._driver.find_element_by_link_text("Not Now").click() #when instagram asks to download the app
         self.check_connection()
         time.sleep(5)
         self.close_popups("//button[contains(text(), 'Cancel')]") #cancel adding instagram to homescreen
@@ -159,4 +162,12 @@ class Post_with_selenium:
 
 if __name__ == "__main__":
     print("Runing as test")
-    p = Post_with_selenium(Path("C:/Users/bogda/OneDrive/Desktop/rest/bot_windows/test.jpg"), "Final testing")
+    # try:
+    #     with open("passwords.txt", "r") as f:
+    #         ps = f.read()
+    #         pw = ps.split(",")[0]
+    # except Exception as ಠ_ಠ:
+    #     print(ಠ_ಠ)
+    #     pw = getpass("Enter password -->")
+
+    p = Post_with_selenium(Path("C:/Users/bogda/OneDrive/Desktop/rest/bot_windows/test.jpg"), "Final testing", username="loves_and_fluffs", password="Nem@njin@12!")

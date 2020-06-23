@@ -19,6 +19,7 @@ def prepare_image_storage():
         if not folder.exists():
             Path.mkdir(folder)
 
+
 def _is_image(image_path):
     """
     Checks if a file is jpg
@@ -28,6 +29,7 @@ def _is_image(image_path):
     if image_path.suffix==".jpg":
         return True
     return False
+
 
 def diff(h1, h2):
     return sum([bin(int(a, 16) ^ int(b, 16)).count('1') for a, b in zip(h1, h2)])
@@ -93,6 +95,7 @@ def check_4_text(image_path):
             log.info("Redflag keyword found")
             return False
     return True
+
 
 def check_4_face(image_path):
     """
