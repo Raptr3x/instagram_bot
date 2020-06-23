@@ -10,7 +10,7 @@ import constants as con
 from pathlib import Path, PureWindowsPath
 from database import Database
 from test_post_data import show_data
-import selenium_scripts.post_selenium
+import selenium_scripts.post_selenium as post
 
 def main():
 	check.prepare_image_storage()
@@ -50,15 +50,15 @@ def main():
 
 		#3) Post image to Instagram, use show_data() to test, post_with_selenium() to post to Instagram
 		# show_data(path, caption)
-		driver = post_selenium.get_driver()
+		driver = post.get_driver()
 
-		loginPage = post_selenium.LoginPage(driver)
+		loginPage = post.LoginPage(driver)
 		loginPage.login(con.USERNAME, password)
 
-		feed = post_selenium.FeedPage(driver)
+		feed = post.FeedPage(driver)
 		feed.goto_post()
 
-		postPage = post_selenium.PostMediaPage(driver)
+		postPage = post.PostMediaPage(driver)
 		postPage.postMedia(path, caption)
 
 
