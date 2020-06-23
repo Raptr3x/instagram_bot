@@ -119,6 +119,8 @@ class PostMediaPage:
         auto.typewrite(str(image_path))
         auto.press('enter')
         
+        _wait(10)
+
         #go next
         self.driver.find_element_by_xpath("//button[contains(text(), 'Next')]").click()
 
