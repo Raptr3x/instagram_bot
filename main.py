@@ -18,8 +18,8 @@ def main():
 	root = con.ROOT_IMAGE_STORAGE
 
 	db = Database()
-
 	wait_time = db.get_wait_time()
+
 	allPosts=0
 	startTime=time.time()
 
@@ -31,6 +31,7 @@ def main():
 	else:
 		password_resupply = getpass(f"Resupply:\nEnter your @{con.USERNAME_RESUPPLY} password: ")
 		password = getpass(f"Post:\nEnter your @{con.USERNAME} password: ")
+
 
 	while 1:
 		#0) Check if image count below threshold, this one is bad, should check in each folder, not just future_images
