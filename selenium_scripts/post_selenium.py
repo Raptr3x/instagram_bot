@@ -15,7 +15,7 @@ from pathlib import Path
 log.basicConfig(format='%(levelname)s:%(message)s', level=log.DEBUG)
 
 
-def _wait(wtime=5):
+def _wait(wtime=10):
     log.info(f"Waiting {wtime} to make sure everything loads")
     time.sleep(wtime)
     log.info(f"{wtime} seconds has passed, continuing")
@@ -116,10 +116,11 @@ class PostMediaPage:
         _wait()
         
         #upload image
+        auto.FAILSAFE = False
         auto.typewrite(str(image_path))
         auto.press('enter')
         
-        _wait(10)
+        _wait(20)
 
         #go next
         self.driver.find_element_by_xpath("//button[contains(text(), 'Next')]").click()
