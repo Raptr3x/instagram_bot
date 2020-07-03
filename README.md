@@ -1,5 +1,6 @@
 # instagram_bot
-Bot that runs @pc_setup_ideas page on instagram
+Bot that runs @pc_setup_ideas page on instagram and since has made over 30k followers.
+
 
 ### Main workflow
 ```
