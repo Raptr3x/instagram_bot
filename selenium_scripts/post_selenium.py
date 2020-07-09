@@ -10,6 +10,7 @@ import logging as log
 import pyautogui as auto
 from getpass import getpass
 from pathlib import Path
+from test_post_data import show_data
 
 
 log.basicConfig(format='%(levelname)s:%(message)s', level=log.DEBUG)
@@ -51,6 +52,7 @@ def _remove_popups(driver):
     _remove_popup_using(driver, "//button[contains(text(), 'Not Now')]")
     _remove_popup_using(driver, "//button[contains(text(), 'Cancel')]")
     _remove_popup_using(driver, "/html/body/div[4]/div/div[2]/div/div[5]/button")
+
 
 def get_driver():
     user_agent = con.USER_AGENT
@@ -147,14 +149,25 @@ if __name__ == "__main__":
         ps = f.read()
         password = ps.split(",")[0]
 
+    path = images.get_image()
+    folder = (path.parts)[-2]
 
-    driver = get_driver()
+    caption = db.get_caption()
+    caption = caption + f"taken from: @{folder}"
 
-    loginPage = LoginPage(driver)
-    loginPage.login(con.USERNAME_RESUPPLY, password)
+    show_data(path, caption) #posting post data to console
 
-    feed = FeedPage(driver)
-    feed.goto_post()
+    """
+    Actually post to instagram:
 
-    postPage = PostMediaPage(driver)
-    postPage.postMedia(r"../test_img.jpg", "testing")
+    # driver = get_driver()
+
+    # loginPage = LoginPage(driver)
+    # loginPage.login(con.USERNAME_RESUPPLY, password)
+
+    # feed = FeedPage(driver)
+    # feed.goto_post()
+
+    # postPage = PostMediaPage(driver)
+    # postPage.postMedia(path, caption)
+    """

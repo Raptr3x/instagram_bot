@@ -14,7 +14,6 @@ import selenium_scripts.post_selenium as post
 
 def main():
 	check.prepare_image_storage()
-
 	root = con.ROOT_IMAGE_STORAGE
 
 	db = Database()
@@ -23,6 +22,7 @@ def main():
 	allPosts=0
 	startTime=time.time()
 
+	#getting passwords to log in
 	if Path("passwords.txt").exists():
 		with open("passwords.txt", "r") as f:
 			passwords = f.read().split(",")
@@ -49,8 +49,7 @@ def main():
 		caption = caption + f"taken from: @{folder}"
 
 
-		#3) Post image to Instagram, use show_data() to test, post_with_selenium() to post to Instagram
-		# show_data(path, caption)
+		#3) Post image to Instagram, use show_data(path, caption) to see post in console
 		driver = post.get_driver()
 
 		loginPage = post.LoginPage(driver)

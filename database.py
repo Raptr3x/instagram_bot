@@ -52,13 +52,12 @@ class Database:
         Returns a str which is a formated caption + hashtags
         """
 
-        #I know it's not the fastest way but it's a really small table
+        #I'm aware that it is not the fastest way but it's a really small table so it will work great
         caption = self.c.execute("SELECT caption FROM captions ORDER BY random() LIMIT 1").fetchone()[0]
+        hashtags_from_db = self.c.execute("SELECT hashtag FROM hashtags ORDER BY random() LIMIT 25").fetchall()
         
-        shitstorm = self.c.execute("SELECT hashtag FROM hashtags ORDER BY random() LIMIT 25").fetchall()
-        
-        #casting that multidimensional tuple-list shitstorm into something less cancerous
-        hashtags = ' '.join(i[0] for i in shitstorm)
+        #casting that multidimensional tuple list into a string
+        hashtags = ' '.join(i[0] for i in hashtags_from_db)
 
         text = f"{caption}\r\n|tags:\n{hashtags}\r\n"
 
@@ -91,8 +90,8 @@ class Database:
 if __name__ == "__main__":
     db = Database()
 
-    # caption = db.get_caption()
-    # wait_time = db.get_wait_time()
-    # dataTargets = db.get_resupply_targets()
-    # print(caption,"\n",wait_time,"\n",dataTargets)
+    caption = db.get_caption()
+    wait_time = db.get_wait_time()
+    dataTargets = db.get_resupply_targets()
+    print(caption,"\n",wait_time,"\n",dataTargets)
     
