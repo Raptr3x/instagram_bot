@@ -84,4 +84,6 @@ atexit.register(send_notification)
 
 if __name__ == "__main__":
 	main()
+
+	#test
 	# notify.pushbullet_message("Test", "This is a test message!")
