@@ -10,17 +10,13 @@ import constants as con
 from pathlib import Path, PureWindowsPath
 from database import Database
 from test_post_data import show_data
-import selenium_scripts.post_selenium as post
+import post_image
 
 def main():
 	check.prepare_image_storage()
 	root = con.ROOT_IMAGE_STORAGE
 
 	db = Database()
-	wait_time = db.get_wait_time()
-
-	allPosts=0
-	startTime=time.time()
 
 	#getting passwords to log in
 	if Path("passwords.txt").exists():
@@ -34,6 +30,11 @@ def main():
 
 
 	while 1:
+		wait_time = db.get_wait_time()
+
+		allPosts=0
+		startTime=time.time()
+
 		#0) Check if image count below threshold, this one is bad, should check in each folder, not just future_images
 		if images.count_images()<con.RESUPPLY_TRESHOLD:
 			images.get_new_images(password_resupply) #steps a to c
@@ -50,22 +51,15 @@ def main():
 
 
 		#3) Post image to Instagram, use show_data(path, caption) to see post in console
-		driver = post.get_driver()
-
-		loginPage = post.LoginPage(driver)
-		loginPage.login(con.USERNAME, password)
-
-		feed = post.FeedPage(driver)
-		feed.goto_post()
-
-		postPage = post.PostMediaPage(driver)
-		postPage.postMedia(path, caption)
-
-
-		#prepare data for printing
-		allPosts+=1
+		if(images.post_image(image_url, caption)):
+			#prepare data for printing
+			allPosts+=1
+			lastPost=datetime.now()
+		else:
+			print('Posting failed, need to try again later')
+			wait_time = 3600
+		
 		upTime=round((time.time() - startTime)/3600, 4)
-		lastPost=datetime.now()
 		nextPost=lastPost + timedelta(seconds=wait_time)
 
 		#4) Print bot data and wait selected amount of time

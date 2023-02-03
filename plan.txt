@@ -1,0 +1,11 @@
+- Nadje sliku, sacuva link
+- proveri da li je:
+    - slika postavljena vec
+    - sadrzi lica
+    - ima redflagovan tekst
+- taj link koristi da uzme opis od chatgpt-a i da postavi sliku na profil
+- od chatgpt-ja uzima i hastagove u vrv odvojenom queriju, videcemo jos
+- hashtagovima se dodaju fiksni hashtagovi
+- sve to se postavlja na insta
+
+

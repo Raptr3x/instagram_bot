@@ -69,3 +69,11 @@ MAX_WAIT = 22200.0
 EMAIL  = "pc.setup.ideas@gmail.com"
 
 IMAP_URL = "imap.gmail.com"
+
+
+# Graph API
+
+GRAPH_URL = 'https://graph.facebook.com/v16.0/'
+INSTA_ACC_ID = '17841409151659064'
+ACCESS_TOKEN = 'EAAG8CWtzsYIBAMgTvzHyPiqIU6ZC5KpZC9PWvoEr2ps5Jrf6b1JI7F8qzYLXOIpZAs7m7ZB9dZASf8rAY5wClZCIN7OlBdFaiD8vzPvuoHdhRBeF80TLi7iwHlsOdHirLWUsd2KEMImZBZAkVhCTOQPbkb01EJrUJoZCz4kfDDZBl3T7CjdCx6uviW7OtwvtpNocearhOEA6chjOkN9CLGhV3W4APAkGN6i4gZD'
+

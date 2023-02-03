@@ -1,13 +1,5 @@
 import requests
 
-'''
-Ovaj kod radi 100%, post_image ti vraca creation_id, taj id korsitis u publish_container da zapravo postavis sliku
-
-korisni linkovi:
-    https://developers.facebook.com/tools/explorer/?method=POST&path=17841409151659064%2Fmedia&version=v16.0&image_url=https%3A%2F%2Fi.redd.it%2Fi0mkepzpetfa1.jpg&caption=test%20123
-    https://developers.facebook.com/docs/instagram-api/guides/content-publishing
-'''
-
 graph_url = 'https://graph.facebook.com/v16.0/'
 
 def post_image(caption='test', image_url='https://i.redd.it/i0mkepzpetfa1.jpg',instagram_account_id='17841409151659064',access_token='EAAG8CWtzsYIBAMgTvzHyPiqIU6ZC5KpZC9PWvoEr2ps5Jrf6b1JI7F8qzYLXOIpZAs7m7ZB9dZASf8rAY5wClZCIN7OlBdFaiD8vzPvuoHdhRBeF80TLi7iwHlsOdHirLWUsd2KEMImZBZAkVhCTOQPbkb01EJrUJoZCz4kfDDZBl3T7CjdCx6uviW7OtwvtpNocearhOEA6chjOkN9CLGhV3W4APAkGN6i4gZD'):
