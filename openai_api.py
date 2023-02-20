@@ -1,17 +1,26 @@
 import requests
 import openai
+import os
 
+openai.api_key = os.getenv("OPENAI_API")
 
-openai.api_key = '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'
-# openai.Model.list()
+prompt = '''Short article or text that provides a brief overview of a topic: 
+"How to Optimize Your Gaming Setup for Maximum Performance"
+followed by a pros and cons discussion or different aspects of that topic.
+in the end write 15 hashtags regarding the subject but add two new epmpty lines before the hashtags.
+One of the hashtags needs to be #pcsetupideas. End the text with two new lines again and "Image taken from: @". Don't add anything after @
+'''
 
 response = openai.Completion.create(
-  model="text-davinci-003",
-  prompt="Give social media description of this image from the link: https://postimg.cc/WhR2WWsQ",
-  max_tokens=200,
-  stop=["11."]
+    model="text-davinci-003",
+    prompt=prompt,
+    max_tokens=500
 )
 
+
+print(response)
+print("-"*40)
+print(response.choices[0].text)
 print(response)
 
 with open('tmp.txt', 'w') as f:
