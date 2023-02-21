@@ -10,7 +10,7 @@ import constants as con
 from pathlib import Path, PureWindowsPath
 from database import Database
 from test_post_data import show_data
-import post_image
+import ai
 
 def main():
 	check.prepare_image_storage()
@@ -46,7 +46,8 @@ def main():
 
 
 		#2) Get random description and random 25 hashtags from db
-		caption = db.get_caption()
+		# caption = db.get_caption()
+		caption = ai.get_caption()
 		caption = caption + f"taken from: @{folder}"
 
 

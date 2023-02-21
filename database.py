@@ -16,8 +16,8 @@ class Database:
         #check if db corrupted
         with open("settings.sql", "r") as sqlFile:
             sql = sqlFile.read()
-        if len(self.c.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall())<2:
-            self.c.executescript(sql)
+            if len(self.c.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall())<2:
+                self.c.executescript(sql)
 
 
 
